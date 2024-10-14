@@ -394,11 +394,7 @@ const rules = `
   - PROCESS-NAME,tailscaled,DIRECT
 
   ## Emby
-  - DOMAIN-SUFFIX,stream.synn.cc,EMBY
-  - DOMAIN-SUFFIX,stream-zz.synn.cc,EMBY
-  - DOMAIN,emby.aca.best,PROXY
-  - DOMAIN,porn.aca.best,PROXY
-  - RULE-SET,emby,PROXY
+  - RULE-SET,emby,EMBY
 
   ## AI
   - RULE-SET,open-ai,PROXY-STATIC
