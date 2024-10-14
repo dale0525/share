@@ -15,6 +15,7 @@ const subscribe_urls = [
         name: "备用机场3",
         url: "{隐藏}",
     },
+    // { name: "warp", url: "https://neko-warp.nloli.xyz/neko_warp.yaml" },
 ];
 const static_providers = [
     "主力机场",
