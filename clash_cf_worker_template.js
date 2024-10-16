@@ -450,89 +450,28 @@ const settings = `
 dns:
   enable: true
   ipv6: false
+  default-nameserver:
+    - 223.5.5.5
+    - 223.6.6.6
+  nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
     - '*.lan'
-    - "+.local"
     - 'localhost.ptlogin2.qq.com'
     - 'dns.msftncsi.com'
     - 'www.msftncsi.com'
     - 'www.msftconnecttest.com'
-  nameserver-policy:
-    'www.baidu.com': '114.114.114.114'
-    '+.internal.crop.com': '10.0.0.1'
-    'geosite:cn': https://doh.pub/dns-query
-  nameserver:
-    - system
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  fallback:
-    - tls://8.8.4.4
-    - tls://1.1.1.1
-  proxy-server-nameserver:
-    - https://doh.pub/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - '+.ai.com'
-      - '+.algolia.net'
-      - '+.anthropic.com'
-      - '+.argotunnel.com'
-      - '+.arkoselabs.com'
-      - '+.auth0.com'
-      - '+.azure.com'
-      - '+.azureedge.net'
-      - '+.bing.com'
-      - '+.bingapis.com'
-      - '+.bugsnag.com'
-      - '+.chatgpt.com'
-      - '+.claude.ai'
-      - '+.cloudflare.net'
-      - '+.cloudflareinsights.com'
-      - '+.cohere.ai'
-      - '+.docker.com'
-      - '+.docker.io'
-      - '+.facebook.com'
-      - '+.github.com'
-      - '+.githubusercontent.com'
-      - '+.google'
-      - '+.google.com'
-      - '+.google.dev'
-      - '+.googleapis.cn'
-      - '+.googlevideo.com'
-      - '+.identrust.com'
-      - '+.instagram.com'
-      - '+.intercom.io'
-      - '+.live.com'
-      - '+.livekit.cloud'
-      - '+.meta.ai'
-      - '+.microsoft.com'
-      - '+.microsoftapp.net'
-      - '+.minecraft.net'
-      - '+.msn.com'
-      - '+.openai.com'
-      - '+.poe.com'
-      - '+.segment.com'
-      - '+.segment.io'
-      - '+.sentry.io'
-      - '+.synn.cc'
-      - '+.stripe.com'
-      - '+.t.me'
-      - '+.tailscale.com'
-      - '+.tailscale.io'
-      - '+.twitter.com'
-      - '+.usefathom.com'
-      - '+.v2ex.com'
-      - '+.windows.net'
-      - '+.wootric.com'
-      - '+.x.com'
-      - '+.youtube.com'
 `;
 
 async function generate_proxy_provider(subscribes) {
