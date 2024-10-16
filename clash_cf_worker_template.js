@@ -370,10 +370,10 @@ rule-providers:
     path: ./ruleset/akamai.yaml
     interval: 86400
 
-  no-resolve:
+  collection:
     type: http
     behavior: classical
-    path: ./rules/no-resolve.yaml
+    path: ./rules/collection.yaml
     url: "https://gist.githubusercontent.com/cnfree8964/0864fd1d2e88936a095fb40d74ce4993/raw/collection.yaml"
 `;
 const rules = `
@@ -441,7 +441,7 @@ const rules = `
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
   - RULE-SET,telegramcidr,PROXY
-  - RULE-SET,no-resolve,DIRECT,no-resolve
+  - RULE-SET,collection,DIRECT,no-resolve
   - GEOIP,LAN,DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH,PROXY
