@@ -448,30 +448,50 @@ const rules = `
 `;
 const settings = `
 dns:
-  enable: true
-  ipv6: false
+  prefer-h3: true
   default-nameserver:
-    - 223.5.5.5
-    - 223.6.6.6
-  nameserver:
-    - 1.1.1.1
-    - 8.8.8.8
-  fallback:
-    - tls://1.1.1.1:853
-    - tls://8.8.8.8:853
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  fake-ip-filter:
-    - '*.lan'
-    - 'localhost.ptlogin2.qq.com'
-    - 'dns.msftncsi.com'
-    - 'www.msftncsi.com'
-    - 'www.msftconnecttest.com'
+    - 180.184.1.1
+    - udp://47.108.230.123:5553
+    - https://119.29.29.29/dns-query
+  nameserver-policy:
+    "http-inputs-notion.splunkcloud.com,+.notion-static.com,+.notion.com,+.notion.new,+.notion.site,+.notion.so": tls://dns.jerryw.cn
+    geosite:geolocation-!cn:
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+      - 180.184.1.1
+    nameserver:
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
+      - 180.184.1.1
+unified-delay: true
+tcp-concurrent: true
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports:
+        - 80
+        - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+        - 443
+        - 8443
+    QUIC:
+      ports:
+        - 443
+        - 8443
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 24
+geodata-loader: standard
+geox-url:
+  geoip: https://fastgh.lainbo.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
+  geosite: https://fastgh.lainbo.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
+  mmdb: https://fastgh.lainbo.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb
 `;
 
 async function generate_proxy_provider(subscribes) {
