@@ -516,7 +516,7 @@ proxy-providers:
     url: "${subscribe.url}"
     interval: 3600
     path: ./proxy/${subscribe.name}.yaml
-    exclude-filter: '${exclude_filter}|${low_ratio_filter}'
+    exclude-filter: '${exclude_filter}` + (low_ratio_filter == "" ? "'" : `|${low_ratio_filter}'`) + `
     health-check:
       enable: false
       interval: 600
